@@ -1,4 +1,4 @@
-# sinapse
+# SINAPSE
 Inovação educacional e gestão inteligente
 ACRÔNIMO PARA SINAPASE: Sistema de Integração e Neurociência com Aplicações em Pedagogia, Sistemas e Educação.
 Esse acrônimo reflete a essência do ecossistema, destacando sua integração tecnológica com aplicações educacionais e pedagógicas baseadas em neurociência e sistemas inteligentes.
