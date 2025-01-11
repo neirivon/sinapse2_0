@@ -7,12 +7,16 @@ Características Principais
 IAs Educacionais:
 
 YA-YA (Your Assistant - Your Ally): Especializada em fornecer suporte direto aos usuários, como docentes, discentes e técnicos administrativos, respondendo dúvidas e solucionando problemas comuns.
-FIA (Facilitadora de Inteligência Aplicada): Focada em auxiliar no processo de aprendizado, fornecendo recomendações baseadas em análises de dados e interações.
-SOPHIA (Sistema Otimizado de Processamento e Harmonização de Informações Automatizadas): Atua como mediadora entre os dados educacionais e operacionais, otimizando fluxos de trabalho e oferecendo insights detalhados.
-MANNO (Monitoramento de Análise Neuropsicopedagógica e Necessidades Operacionais): Ferramenta de backend que utiliza dados para avaliar, correlacionar e melhorar práticas pedagógicas.
-MANNA (Monitoramento de Análise Automática Normatizada e Necessidades Antecipadas): Especializada em prever demandas e identificar padrões, permitindo ações proativas no ambiente educacional e operacional.
-Modularidade:
 
+FIA (Facilitadora de Inteligência Aplicada): Focada em auxiliar no processo de aprendizado, fornecendo recomendações baseadas em análises de dados e interações.
+
+SOPHIA (Sistema Otimizado de Processamento e Harmonização de Informações Automatizadas): Atua como mediadora entre os dados educacionais e operacionais, otimizando fluxos de trabalho e oferecendo insights detalhados.
+
+MANNO (Monitoramento de Análise Neuropsicopedagógica e Necessidades Operacionais): Ferramenta de backend que utiliza dados para avaliar, correlacionar e melhorar práticas pedagógicas.
+
+MANNA (Monitoramento de Análise Automática Normatizada e Necessidades Antecipadas): Especializada em prever demandas e identificar padrões, permitindo ações proativas no ambiente educacional e operacional.
+
+Modularidade:
 Organizado em uma estrutura modular, o ecossistema SINAPSE permite a integração e expansão de funcionalidades conforme as necessidades do ambiente.
 Integração com Sistemas Existentes:
 
