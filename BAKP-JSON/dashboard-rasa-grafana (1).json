@@ -1,0 +1,185 @@
+{
+  "dashboard": {
+    "id": null,
+    "uid": null,
+    "title": "Dashboard Rasa - Monitoramento",
+    "tags": [
+      "rasa",
+      "monitoramento",
+      "tdic"
+    ],
+    "timezone": "browser",
+    "schemaVersion": 36,
+    "version": 1,
+    "refresh": "30s",
+    "panels": [
+      {
+        "title": "\ud83d\udcca Inten\u00e7\u00f5es mais acionadas",
+        "type": "piechart",
+        "datasource": "Prometheus",
+        "fieldConfig": {
+          "defaults": {
+            "unit": "short",
+            "color": {
+              "mode": "palette-classic"
+            }
+          }
+        },
+        "targets": [
+          {
+            "expr": "rasa_messages_total",
+            "legendFormat": "{{intent}}",
+            "refId": "A"
+          }
+        ],
+        "options": {
+          "legend": {
+            "displayMode": "table",
+            "placement": "bottom"
+          },
+          "pieType": "donut"
+        },
+        "gridPos": {
+          "h": 10,
+          "w": 12,
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "title": "\u23f1 Tempo m\u00e9dio de resposta",
+        "type": "timeseries",
+        "datasource": "Prometheus",
+        "fieldConfig": {
+          "defaults": {
+            "unit": "s",
+            "color": {
+              "mode": "palette-classic"
+            }
+          }
+        },
+        "targets": [
+          {
+            "expr": "rate(rasa_response_time_seconds_sum[1m]) / rate(rasa_response_time_seconds_count[1m])",
+            "legendFormat": "Tempo M\u00e9dio (s)",
+            "refId": "A"
+          }
+        ],
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 0
+        }
+      },
+      {
+        "title": "\ud83d\udea8 Total de erros por tipo",
+        "type": "barchart",
+        "datasource": "Prometheus",
+        "fieldConfig": {
+          "defaults": {
+            "unit": "short",
+            "color": {
+              "mode": "palette-classic"
+            }
+          }
+        },
+        "targets": [
+          {
+            "expr": "rasa_errors_total",
+            "legendFormat": "{{error}}",
+            "refId": "A"
+          }
+        ],
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 10
+        }
+      },
+      {
+        "title": "\ud83d\udc65 Sess\u00f5es simult\u00e2neas",
+        "type": "stat",
+        "datasource": "Prometheus",
+        "fieldConfig": {
+          "defaults": {
+            "unit": "short",
+            "color": {
+              "mode": "palette-classic"
+            }
+          }
+        },
+        "targets": [
+          {
+            "expr": "rasa_active_sessions",
+            "legendFormat": "Sess\u00f5es Ativas",
+            "refId": "A"
+          }
+        ],
+        "options": {
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "orientation": "horizontal",
+          "colorMode": "value"
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 6,
+          "x": 12,
+          "y": 8
+        }
+      },
+      {
+        "title": "\u2705 Status do Container Rasa",
+        "type": "stat",
+        "datasource": "Prometheus",
+        "targets": [
+          {
+            "expr": "probe_success{instance=\"rasa:5005\"}",
+            "legendFormat": "Rasa Health",
+            "refId": "A"
+          }
+        ],
+        "options": {
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ]
+          },
+          "colorMode": "background",
+          "orientation": "horizontal"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "red",
+                  "value": 0
+                },
+                {
+                  "color": "green",
+                  "value": 1
+                }
+              ]
+            }
+          }
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 6,
+          "x": 18,
+          "y": 8
+        }
+      }
+    ]
+  },
+  "overwrite": true
+}
