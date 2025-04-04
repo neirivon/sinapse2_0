@@ -1,0 +1,382 @@
+{
+  "dashboard": {
+    "id": null,
+    "uid": null,
+    "title": "Dashboard SINAPSE 2.0 (Avan\u00e7ado)",
+    "tags": [
+      "sinapse20"
+    ],
+    "timezone": "browser",
+    "schemaVersion": 36,
+    "version": 3,
+    "refresh": "30s",
+    "editable": true,
+    "panels": [
+      {
+        "type": "graph",
+        "title": "Mensagens do Usu\u00e1rio (RASA)",
+        "id": 1,
+        "datasource": "Prometheus",
+        "targets": [
+          {
+            "expr": "rate(rasa_user_messages_total{projeto=\"$projeto\", environment=\"$environment\", instance=\"$instance\"}[5m])",
+            "legendFormat": "{{instance}}",
+            "refId": "A"
+          }
+        ],
+        "gridPos": {
+          "h": 8,
+          "w": 24,
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "type": "graph",
+        "title": "Uso da GPU (DCGM)",
+        "id": 2,
+        "datasource": "Prometheus",
+        "targets": [
+          {
+            "expr": "DCGM_FI_DEV_GPU_UTIL{projeto=\"$projeto\", environment=\"$environment\", instance=\"$instance\"}",
+            "legendFormat": "GPU Utiliza\u00e7\u00e3o - {{instance}}",
+            "refId": "A"
+          }
+        ],
+        "gridPos": {
+          "h": 8,
+          "w": 24,
+          "x": 0,
+          "y": 8
+        }
+      },
+      {
+        "type": "graph",
+        "title": "Total de Logs (Feedback - TSDB)",
+        "id": 3,
+        "datasource": "Prometheus",
+        "targets": [
+          {
+            "expr": "tsdb_log_entries_total{projeto=\"$projeto\", environment=\"$environment\", instance=\"$instance\"}",
+            "legendFormat": "Logs - {{instance}}",
+            "refId": "A"
+          }
+        ],
+        "gridPos": {
+          "h": 8,
+          "w": 24,
+          "x": 0,
+          "y": 16
+        }
+      },
+      {
+        "type": "graph",
+        "datasource": "Prometheus",
+        "targets": [
+          {
+            "expr": "rate(redpanda_messages_ingested_total{projeto=\"$projeto\", environment=\"$environment\", instance=\"$instance\"}[5m])",
+            "legendFormat": "Coleta de Dados (REDPANDA) - {{instance}}",
+            "refId": "A"
+          }
+        ],
+        "gridPos": {
+          "h": 8,
+          "w": 24,
+          "x": 0,
+          "y": 24
+        },
+        "id": 4,
+        "title": "Coleta de Dados (REDPANDA)"
+      },
+      {
+        "type": "graph",
+        "datasource": "Prometheus",
+        "targets": [
+          {
+            "expr": "rate(mysql_global_status_questions{projeto=\"$projeto\", environment=\"$environment\", instance=\"$instance\"}[5m])",
+            "legendFormat": "Banco de Dados (MariaDB GLPI) - {{instance}}",
+            "refId": "A"
+          }
+        ],
+        "gridPos": {
+          "h": 8,
+          "w": 24,
+          "x": 0,
+          "y": 32
+        },
+        "id": 5,
+        "title": "Banco de Dados (MariaDB GLPI)"
+      },
+      {
+        "type": "graph",
+        "datasource": "Prometheus",
+        "targets": [
+          {
+            "expr": "mongodb_op_counters_total{projeto=\"$projeto\", environment=\"$environment\", instance=\"$instance\"}",
+            "legendFormat": "Banco NoSQL (MongoDB TS) - {{instance}}",
+            "refId": "A"
+          }
+        ],
+        "gridPos": {
+          "h": 8,
+          "w": 24,
+          "x": 0,
+          "y": 40
+        },
+        "id": 6,
+        "title": "Banco NoSQL (MongoDB TS)"
+      },
+      {
+        "type": "graph",
+        "datasource": "Prometheus",
+        "targets": [
+          {
+            "expr": "milvus_query_total{projeto=\"$projeto\", environment=\"$environment\", instance=\"$instance\"}",
+            "legendFormat": "Banco Vetorial (Milvus/FAISS) - {{instance}}",
+            "refId": "A"
+          }
+        ],
+        "gridPos": {
+          "h": 8,
+          "w": 24,
+          "x": 0,
+          "y": 48
+        },
+        "id": 7,
+        "title": "Banco Vetorial (Milvus/FAISS)"
+      },
+      {
+        "type": "graph",
+        "datasource": "Prometheus",
+        "targets": [
+          {
+            "expr": "rate(superset_queries_total{projeto=\"$projeto\", environment=\"$environment\", instance=\"$instance\"}[5m])",
+            "legendFormat": "Visualiza\u00e7\u00e3o (Superset) - {{instance}}",
+            "refId": "A"
+          }
+        ],
+        "gridPos": {
+          "h": 8,
+          "w": 24,
+          "x": 0,
+          "y": 56
+        },
+        "id": 8,
+        "title": "Visualiza\u00e7\u00e3o (Superset)"
+      },
+      {
+        "type": "graph",
+        "datasource": "Prometheus",
+        "targets": [
+          {
+            "expr": "rate(metabase_cards_viewed_total{projeto=\"$projeto\", environment=\"$environment\", instance=\"$instance\"}[5m])",
+            "legendFormat": "Visualiza\u00e7\u00e3o (Metabase) - {{instance}}",
+            "refId": "A"
+          }
+        ],
+        "gridPos": {
+          "h": 8,
+          "w": 24,
+          "x": 0,
+          "y": 64
+        },
+        "id": 9,
+        "title": "Visualiza\u00e7\u00e3o (Metabase)"
+      },
+      {
+        "type": "graph",
+        "datasource": "Prometheus",
+        "targets": [
+          {
+            "expr": "rate(grafana_dashboard_loads_total{projeto=\"$projeto\", environment=\"$environment\", instance=\"$instance\"}[5m])",
+            "legendFormat": "Visualiza\u00e7\u00e3o (Grafana Educacional) - {{instance}}",
+            "refId": "A"
+          }
+        ],
+        "gridPos": {
+          "h": 8,
+          "w": 24,
+          "x": 0,
+          "y": 72
+        },
+        "id": 10,
+        "title": "Visualiza\u00e7\u00e3o (Grafana Educacional)"
+      },
+      {
+        "type": "graph",
+        "datasource": "Prometheus",
+        "targets": [
+          {
+            "expr": "rate(redisai_commands_total{projeto=\"$projeto\", environment=\"$environment\", instance=\"$instance\"}[5m])",
+            "legendFormat": "RedisAI - Execu\u00e7\u00f5es - {{instance}}",
+            "refId": "A"
+          }
+        ],
+        "gridPos": {
+          "h": 8,
+          "w": 24,
+          "x": 0,
+          "y": 80
+        },
+        "id": 11,
+        "title": "RedisAI - Execu\u00e7\u00f5es",
+        "alert": {
+          "conditions": [
+            {
+              "evaluator": {
+                "params": [
+                  100
+                ],
+                "type": "gt"
+              },
+              "operator": {
+                "type": "and"
+              },
+              "query": {
+                "params": [
+                  "A"
+                ]
+              },
+              "reducer": {
+                "type": "avg"
+              },
+              "type": "query"
+            }
+          ],
+          "name": "Alerta: RedisAI Alta Execu\u00e7\u00e3o",
+          "executionErrorState": "alerting",
+          "frequency": "60s",
+          "handler": 1,
+          "noDataState": "no_data",
+          "for": "5m",
+          "message": "N\u00famero elevado de execu\u00e7\u00f5es em RedisAI"
+        }
+      },
+      {
+        "type": "graph",
+        "datasource": "Prometheus",
+        "targets": [
+          {
+            "expr": "rate(ollama_requests_total{projeto=\"$projeto\", environment=\"$environment\", instance=\"$instance\"}[5m])",
+            "legendFormat": "OLLaMA - Consultas - {{instance}}",
+            "refId": "A"
+          }
+        ],
+        "gridPos": {
+          "h": 8,
+          "w": 24,
+          "x": 0,
+          "y": 88
+        },
+        "id": 12,
+        "title": "OLLaMA - Consultas"
+      },
+      {
+        "type": "graph",
+        "datasource": "Prometheus",
+        "targets": [
+          {
+            "expr": "rate(llama_inferences_total{projeto=\"$projeto\", environment=\"$environment\", instance=\"$instance\"}[5m])",
+            "legendFormat": "LLaMA - Infer\u00eancias - {{instance}}",
+            "refId": "A"
+          }
+        ],
+        "gridPos": {
+          "h": 8,
+          "w": 24,
+          "x": 0,
+          "y": 96
+        },
+        "id": 13,
+        "title": "LLaMA - Infer\u00eancias"
+      },
+      {
+        "type": "graph",
+        "datasource": "Prometheus",
+        "targets": [
+          {
+            "expr": "rate(glpi_tickets_created_total{projeto=\"$projeto\", environment=\"$environment\", instance=\"$instance\"}[5m])",
+            "legendFormat": "GLPi (SIA) - Ordens de Servi\u00e7o - {{instance}}",
+            "refId": "A"
+          }
+        ],
+        "gridPos": {
+          "h": 8,
+          "w": 24,
+          "x": 0,
+          "y": 104
+        },
+        "id": 14,
+        "title": "GLPi (SIA) - Ordens de Servi\u00e7o",
+        "alert": {
+          "conditions": [
+            {
+              "evaluator": {
+                "params": [
+                  200
+                ],
+                "type": "gt"
+              },
+              "operator": {
+                "type": "and"
+              },
+              "query": {
+                "params": [
+                  "A"
+                ]
+              },
+              "reducer": {
+                "type": "avg"
+              },
+              "type": "query"
+            }
+          ],
+          "name": "Alerta: GLPi Muitas OS",
+          "executionErrorState": "alerting",
+          "frequency": "60s",
+          "handler": 1,
+          "noDataState": "no_data",
+          "for": "5m",
+          "message": "Alto volume de cria\u00e7\u00e3o de Ordens de Servi\u00e7o no GLPi"
+        }
+      }
+    ],
+    "templating": {
+      "list": [
+        {
+          "name": "projeto",
+          "type": "query",
+          "datasource": "Prometheus",
+          "refresh": 2,
+          "query": "label_values(projeto)",
+          "label": "Projeto",
+          "hide": 0,
+          "includeAll": false,
+          "multi": false
+        },
+        {
+          "name": "environment",
+          "type": "query",
+          "datasource": "Prometheus",
+          "refresh": 2,
+          "query": "label_values(environment)",
+          "label": "Ambiente",
+          "hide": 0,
+          "includeAll": false,
+          "multi": false
+        },
+        {
+          "name": "instance",
+          "type": "query",
+          "datasource": "Prometheus",
+          "refresh": 2,
+          "query": "label_values(instance)",
+          "label": "Inst\u00e2ncia",
+          "hide": 0,
+          "includeAll": false,
+          "multi": false
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,179 @@
+{
+  "dashboard": {
+    "id": null,
+    "uid": null,
+    "title": "Rasa Chatbot - Monitoramento",
+    "timezone": "browser",
+    "schemaVersion": 38,
+    "version": 1,
+    "refresh": "10s",
+    "panels": [
+      {
+        "type": "timeseries",
+        "title": "\ud83d\udcc8 Inten\u00e7\u00f5es mais acionadas",
+        "datasource": "Prometheus",
+        "fieldConfig": {
+          "defaults": {
+            "unit": "short",
+            "custom": {
+              "drawStyle": "line",
+              "lineInterpolation": "smooth",
+              "lineWidth": 2,
+              "fillOpacity": 10,
+              "showPoints": "never",
+              "axisPlacement": "left"
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 0
+        },
+        "id": 1,
+        "targets": [
+          {
+            "expr": "rasa_messages_total",
+            "legendFormat": "{{intent}}",
+            "refId": "A"
+          }
+        ]
+      },
+      {
+        "type": "timeseries",
+        "title": "\ud83d\udd52 Tempo m\u00e9dio de resposta (s)",
+        "datasource": "Prometheus",
+        "fieldConfig": {
+          "defaults": {
+            "unit": "s",
+            "custom": {
+              "drawStyle": "line",
+              "lineInterpolation": "smooth",
+              "lineWidth": 2,
+              "fillOpacity": 10,
+              "showPoints": "never",
+              "axisPlacement": "left"
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 8
+        },
+        "id": 2,
+        "targets": [
+          {
+            "expr": "rate(rasa_response_time_seconds_sum[1m]) / rate(rasa_response_time_seconds_count[1m])",
+            "legendFormat": "{{intent}}",
+            "refId": "A"
+          }
+        ]
+      },
+      {
+        "type": "timeseries",
+        "title": "\ud83d\udd34 Erros por tipo",
+        "datasource": "Prometheus",
+        "fieldConfig": {
+          "defaults": {
+            "unit": "short",
+            "custom": {
+              "drawStyle": "line",
+              "lineInterpolation": "smooth",
+              "lineWidth": 2,
+              "fillOpacity": 10,
+              "showPoints": "never",
+              "axisPlacement": "left"
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 8
+        },
+        "id": 3,
+        "targets": [
+          {
+            "expr": "rasa_errors_total",
+            "legendFormat": "{{intent}}",
+            "refId": "A"
+          }
+        ]
+      },
+      {
+        "type": "timeseries",
+        "title": "\ud83d\udc65 Sess\u00f5es simult\u00e2neas",
+        "datasource": "Prometheus",
+        "fieldConfig": {
+          "defaults": {
+            "unit": "none",
+            "custom": {
+              "drawStyle": "line",
+              "lineInterpolation": "smooth",
+              "lineWidth": 2,
+              "fillOpacity": 10,
+              "showPoints": "never",
+              "axisPlacement": "left"
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 16
+        },
+        "id": 4,
+        "targets": [
+          {
+            "expr": "rasa_active_sessions",
+            "legendFormat": "{{intent}}",
+            "refId": "A"
+          }
+        ]
+      },
+      {
+        "type": "timeseries",
+        "title": "\u2705 Status do container rasa (1=Up, 0=Down)",
+        "datasource": "Prometheus",
+        "fieldConfig": {
+          "defaults": {
+            "unit": "none",
+            "custom": {
+              "drawStyle": "line",
+              "lineInterpolation": "smooth",
+              "lineWidth": 2,
+              "fillOpacity": 10,
+              "showPoints": "never",
+              "axisPlacement": "left"
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 16
+        },
+        "id": 5,
+        "targets": [
+          {
+            "expr": "up{job='rasa-metrics'}",
+            "legendFormat": "{{intent}}",
+            "refId": "A"
+          }
+        ]
+      }
+    ]
+  },
+  "overwrite": true
+}
