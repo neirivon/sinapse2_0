@@ -1,0 +1,38 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "🧠 Iniciar Painel Flask (SINAPSE 2.0)",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/scripts/painel_flask.py",
+      "console": "integratedTerminal",
+      "justMyCode": true,
+      "env": {
+        "FLASK_ENV": "development"
+      },
+      "envFile": "${workspaceFolder}/.env"
+    },
+    {
+      "name": "🤖 Rasa Server",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/apps/rasa/run_rasa.py",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "🎓 Iniciar FIA",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/apps/rasa/fia_main.py",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "🧠 Iniciar SOPHIA",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/apps/rasa/sophia_main.py",
+      "console": "integratedTerminal"
+    }
+  ]
+}

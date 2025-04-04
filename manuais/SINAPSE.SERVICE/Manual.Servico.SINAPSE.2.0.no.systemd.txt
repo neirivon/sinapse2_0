@@ -1,0 +1,19 @@
+Para controlar manualmente o serviço sinapse.service que gerencia o Docker Compose do seu ecossistema SINAPSE, você pode usar os seguintes comandos com o systemctl:
+
+🛑 Parar o serviço (desliga os containers):
+sudo systemctl stop sinapse.service
+▶️ Subir o serviço (executa docker compose up -d):
+sudo systemctl start sinapse.service
+
+🔄 Reiniciar o serviço (faz down e depois up dos containers):
+sudo systemctl restart sinapse.service
+
+📋 Verificar o status atual do serviço:
+systemctl status sinapse.service
+
+📋 E para garantir que está ativado:
+sudo systemctl enable --now sinapse.service
+
+📜 Acompanhar os logs em tempo real:
+journalctl -u sinapse.service -f
+Esses comandos te dão controle total sobre a orquestração do seu ecossistema via systemd. E o melhor: de forma padronizada, segura e persistente entre reinicializações.

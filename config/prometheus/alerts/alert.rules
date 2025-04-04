@@ -1,0 +1,11 @@
+groups:
+- name: rasa_alerts
+  rules:
+  - alert: HighMemoryUsage
+    expr: process_resident_memory_bytes / 1024^2 > 512  # > 512MB
+    for: 5m
+    labels:
+      severity: warning
+    annotations:
+      summary: "Alto uso de memória no RASA ({{ $value }} MB)"
+      description: "O container RASA está usando mais de 512MB de RAM por mais de 5 minutos"

@@ -1,0 +1,22 @@
+Para evitar que os painéis fiquem vazios no Grafana por ausência de dados em tempo real (ex: RedisAI ainda não está recebendo requisições), você pode usar algumas estratégias no PromQL para garantir que os painéis:
+Apareçam com uma linha zerada (0) mesmo sem dados reais.
+Continuem funcionando normalmente quando os dados começarem a chegar.
+Não quebrem os alertas ou exibam “No Data”.
+
+🔧 Como aplicar nos seus casos:
+1. RedisAI
+rate(redisai_commands_total{projeto="$projeto", environment="$environment", instance="$instance"}[5m]) or vector(0)
+
+2. OLLaMA
+rate(ollama_requests_total{projeto="$projeto", environment="$environment", instance="$instance"}[5m]) or vector(0)
+
+3. LLaMA
+rate(llama_inferences_total{projeto="$projeto", environment="$environment", instance="$instance"}[5m]) or vector(0)
+
+4. GLPi (SIA)
+rate(glpi_tickets_created_total{projeto="$projeto", environment="$environment", instance="$instance"}[5m]) or vector(0)
+
+📌 O que or vector(0) faz?
+Garante que, se a métrica não existir ou não estiver emitindo dados, o Prometheus retorne 0.
+Isso faz com que o painel não fique em branco ou com erro.
+Quando a métrica aparecer de verdade, ela substitui o 0.

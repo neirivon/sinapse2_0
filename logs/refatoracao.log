@@ -1,0 +1,14 @@
+[ter 01 abr 2025 21:46:40 -03] Iniciando verificação e backup...
+tar: Removendo `/' inicial dos nomes dos membros
+[ter 01 abr 2025 21:46:40 -03] ✅ Backup criado com sucesso: /home/neirivon/SINAPSE.2.0/backups/grafana/backup_grafana_2025-04-01_21-46-40.tar.gz
+[ter 01 abr 2025 21:46:54 -03] Iniciando verificação e backup...
+tar: Removendo `/' inicial dos nomes dos membros
+[ter 01 abr 2025 21:46:54 -03] ✅ Backup criado com sucesso: /home/neirivon/SINAPSE.2.0/backups/grafana/backup_grafana_2025-04-01_21-46-54.tar.gz
+[ter 01 abr 2025 23:59:19 -03] Iniciando verificação e backup...
+tar: Removendo `/' inicial dos nomes dos membros
+[ter 01 abr 2025 23:59:19 -03] ✅ Backup criado com sucesso: /home/neirivon/SINAPSE.2.0/backups/grafana/backup_grafana_2025-04-01_23-59-19.tar.gz
+[ter 01 abr 2025 23:59:19 -03] 🗑️ Backups antigos (30+ dias) removidos automaticamente.
+[sex 04 abr 2025 06:41:53 -03] Iniciando verificação e backup...
+tar: Removendo `/' inicial dos nomes dos membros
+[sex 04 abr 2025 06:41:54 -03] ✅ Backup criado com sucesso: /home/neirivon/SINAPSE.2.0/backups/grafana/backup_grafana_2025-04-04_06-41-53.tar.gz
+[sex 04 abr 2025 06:41:54 -03] 🗑️ Backups antigos (30+ dias) removidos automaticamente.

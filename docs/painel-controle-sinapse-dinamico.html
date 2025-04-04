@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Painel de Controle - SINAPSE 2.0 (Dinâmico)</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 1rem;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      body {
+        background-color: #1e1e1e;
+        color: #f0f0f0;
+      }
+      table {
+        background-color: #2e2e2e;
+      }
+      th {
+        background-color: #333;
+        color: #f0f0f0;
+      }
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    header img {
+      width: 60px;
+      height: auto;
+    }
+
+    h1 {
+      margin: 0;
+    }
+
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .tabs button {
+      background: #2980b9;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      cursor: pointer;
+      margin: 0 5px 5px 0;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+
+    .tabs button:hover, .tabs button.active {
+      background-color: #1c5987;
+    }
+
+    .tabcontent {
+      display: none;
+    }
+
+    .tabcontent.active {
+      display: block;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 2rem;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 10px;
+      border-bottom: 1px solid #ccc;
+    }
+
+    code {
+      background: #eee;
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
+
+    button.copy-btn {
+      float: right;
+      font-size: 0.8rem;
+      margin-left: 10px;
+      padding: 2px 6px;
+      border: none;
+      border-radius: 3px;
+      background: #3498db;
+      color: white;
+      cursor: pointer;
+    }
+
+    footer {
+      font-size: 0.8rem;
+      color: #777;
+      margin-top: 3rem;
+      text-align: center;
+    }
+
+    @media (max-width: 600px) {
+      .tabs button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="logo-sinapse.png" alt="Logo SINAPSE 2.0" />
+  <h1>Painel de Controle - SINAPSE 2.0</h1>
+</header>
+
+<div class="tabs">
+  <button class="tablink active" onclick="openTab(event, 'projeto')">⚙️ Abertura</button>
+  <button class="tablink" onclick="openTab(event, 'docker')">🐳 Docker</button>
+  <button class="tablink" onclick="openTab(event, 'backup')">💾 Backup</button>
+  <button class="tablink" onclick="openTab(event, 'logs')">📊 Logs</button>
+  <button class="tablink" onclick="openTab(event, 'pastas')">📂 Pastas</button>
+</div>
+
+<div id="projeto" class="tabcontent active">
+  <table>
+    <tr><th>Comando</th><th>Descrição</th></tr>
+    <tr><td><code>sinapse</code> <button class="copy-btn" onclick="copy('sinapse')">Copiar</button></td><td>Abrir projeto no VS Code</td></tr>
+  </table>
+</div>
+
+<div id="docker" class="tabcontent">
+  <table>
+    <tr><th>Comando</th><th>Descrição</th></tr>
+    <tr><td><code>dcup</code> <button class="copy-btn" onclick="copy('dcup')">Copiar</button></td><td>Sobe containers</td></tr>
+    <tr><td><code>dcdown</code> <button class="copy-btn" onclick="copy('dcdown')">Copiar</button></td><td>Para containers</td></tr>
+    <tr><td><code>dcps</code> <button class="copy-btn" onclick="copy('dcps')">Copiar</button></td><td>Status dos containers</td></tr>
+  </table>
+</div>
+
+<div id="backup" class="tabcontent">
+  <table>
+    <tr><th>Comando</th><th>Descrição</th></tr>
+    <tr><td><code>backupgraf</code> <button class="copy-btn" onclick="copy('backupgraf')">Copiar</button></td><td>Backup do Grafana</td></tr>
+  </table>
+</div>
+
+<div id="logs" class="tabcontent">
+  <table>
+    <tr><th>Comando</th><th>Descrição</th></tr>
+    <tr><td><code>rasalogs</code> <button class="copy-btn" onclick="copy('rasalogs')">Copiar</button></td><td>Logs do Rasa</td></tr>
+    <tr><td><code>reloadotel</code> <button class="copy-btn" onclick="copy('reloadotel')">Copiar</button></td><td>Reiniciar OTEL Collector</td></tr>
+  </table>
+</div>
+
+<div id="pastas" class="tabcontent">
+  <table>
+    <tr><th>Comando</th><th>Descrição</th></tr>
+    <tr><td><code>dashboards</code> <button class="copy-btn" onclick="copy('dashboards')">Copiar</button></td><td>Abrir pasta de dashboards</td></tr>
+    <tr><td><code>logs</code> <button class="copy-btn" onclick="copy('logs')">Copiar</button></td><td>Abrir pasta de logs</td></tr>
+    <tr><td><code>models</code> <button class="copy-btn" onclick="copy('models')">Copiar</button></td><td>Abrir pasta de modelos</td></tr>
+  </table>
+</div>
+
+<footer>
+  Atualizado automaticamente por IA · SINAPSE 2.0 · Responsivo, interativo e com Dark Mode 🌙
+</footer>
+
+<script>
+  function openTab(evt, tabName) {
+    var i, tabcontent, tablink;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].classList.remove("active");
+    }
+    tablink = document.getElementsByClassName("tablink");
+    for (i = 0; i < tablink.length; i++) {
+      tablink[i].classList.remove("active");
+    }
+    document.getElementById(tabName).classList.add("active");
+    evt.currentTarget.classList.add("active");
+  }
+
+  function copy(text) {
+    navigator.clipboard.writeText(text).then(function() {
+      alert("Comando '" + text + "' copiado!");
+    });
+  }
+</script>
+
+</body>
+</html>

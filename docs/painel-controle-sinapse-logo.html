@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Painel de Controle - SINAPSE 2.0</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f4f4;
+      padding: 2rem;
+      color: #333;
+    }
+    h1 {
+      color: #2c3e50;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 0.5rem;
+    }
+    .logo {
+      width: 64px;
+      height: auto;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-bottom: 2rem;
+    }
+    th, td {
+      text-align: left;
+      padding: 12px;
+      border-bottom: 1px solid #ddd;
+    }
+    th {
+      background: #2980b9;
+      color: white;
+    }
+    tr:hover {
+      background-color: #e6f7ff;
+    }
+    code {
+      background: #eee;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.95rem;
+    }
+    footer {
+      margin-top: 2rem;
+      font-size: 0.85rem;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <h1>
+    <img src="logo-sinapse.png" alt="Logo SINAPSE 2.0" class="logo" />
+    Painel de Controle - SINAPSE 2.0
+  </h1>
+
+  <h2>⚙️ Abertura do Projeto</h2>
+  <table>
+    <tr><th>Comando</th><th>Descrição</th></tr>
+    <tr><td><code>sinapse</code></td><td>Abre o workspace do VS Code com todas as pastas</td></tr>
+  </table>
+
+  <h2>🐳 Docker Compose</h2>
+  <table>
+    <tr><th>Comando</th><th>Descrição</th></tr>
+    <tr><td><code>dcup</code></td><td>Sobe os containers com Docker Compose</td></tr>
+    <tr><td><code>dcdown</code></td><td>Encerra os containers</td></tr>
+    <tr><td><code>dcps</code></td><td>Mostra o status dos containers</td></tr>
+  </table>
+
+  <h2>💾 Backups</h2>
+  <table>
+    <tr><th>Comando</th><th>Descrição</th></tr>
+    <tr><td><code>backupgraf</code></td><td>Cria um backup do banco de dados do Grafana</td></tr>
+  </table>
+
+  <h2>📊 Monitoramento e Logs</h2>
+  <table>
+    <tr><th>Comando</th><th>Descrição</th></tr>
+    <tr><td><code>rasalogs</code></td><td>Acompanha logs do container Rasa (via Docker)</td></tr>
+    <tr><td><code>reloadotel</code></td><td>Reinicia o container do OTEL Collector</td></tr>
+  </table>
+
+  <h2>📂 Acesso rápido a diretórios</h2>
+  <table>
+    <tr><th>Comando</th><th>Descrição</th></tr>
+    <tr><td><code>dashboards</code></td><td>Abre a pasta de dashboards</td></tr>
+    <tr><td><code>logs</code></td><td>Abre a pasta de logs</td></tr>
+    <tr><td><code>models</code></td><td>Abre a pasta de modelos</td></tr>
+  </table>
+
+  <footer>
+    Atualizado automaticamente por IA no estilo do projeto SINAPSE 2.0 🚀
+  </footer>
+</body>
+</html>

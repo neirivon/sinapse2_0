@@ -1,0 +1,21 @@
+version: "3.1"
+
+intents:
+  - saudacao
+  - despedida
+  - ajuda
+
+responses:
+  utter_saudacao:
+    - text: "Olá! Como posso ajudar?"
+
+  utter_despedida:
+    - text: "Tchau! Volte sempre."
+
+  utter_ajuda:
+    - text: "Claro! Me diga como posso te ajudar."
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+

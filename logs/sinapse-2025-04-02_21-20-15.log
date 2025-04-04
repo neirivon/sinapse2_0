@@ -1,0 +1,42 @@
+
+🔍 Verificando containers em execução...
+NAMES              STATUS                                 PORTS
+grafana            Up About a minute (healthy)            0.0.0.0:3000->3000/tcp, [::]:3000->3000/tcp
+prometheus         Up About a minute (healthy)            0.0.0.0:9090->9090/tcp, [::]:9090->9090/tcp
+redisai-exporter   Up About a minute (health: starting)   0.0.0.0:9121->9121/tcp, [::]:9121->9121/tcp
+dcgm-exporter      Up About a minute (health: starting)   0.0.0.0:9400->9400/tcp, [::]:9400->9400/tcp
+rasa               Up About a minute (healthy)            0.0.0.0:5005->5005/tcp, [::]:5005->5005/tcp, 0.0.0.0:9091->9091/tcp, [::]:9091->9091/tcp
+otel-collector     Up About a minute (health: starting)   0.0.0.0:4317-4318->4317-4318/tcp, [::]:4317-4318->4317-4318/tcp, 0.0.0.0:8889->8889/tcp, [::]:8889->8889/tcp, 55678-55679/tcp
+redisai            Up About a minute                      0.0.0.0:6380->6379/tcp, [::]:6380->6379/tcp
+
+🔍 Verificando status de saúde (healthcheck)...
+grafana => healthy
+prometheus => healthy
+redisai-exporter => starting
+dcgm-exporter => starting
+rasa => healthy
+otel-collector => starting
+redisai => 
+sem healthcheck
+
+🔍 Testando endpoints principais via localhost...
+🔗 http://localhost:9090 ... ✅ OK
+🔗 http://localhost:3000 ... ✅ OK
+🔗 http://localhost:5005/status ... ✅ OK
+🔗 http://localhost:9121/metrics ... ✅ OK
+🔗 http://localhost:9400/metrics ... ✅ OK
+🔗 http://localhost:8889/metrics ... ✅ OK
+
+🔍 Validando targets no Prometheus:
+{
+  "job": "otel-collector",
+  "health": "up",
+  "scrapeUrl": "http://otel-collector:8889/metrics"
+}
+{
+  "job": "prometheus",
+  "health": "up",
+  "scrapeUrl": "http://localhost:9090/metrics"
+}
+
+🔍 📦 Logs salvos em: logs/sinapse-2025-04-02_21-20-15.log

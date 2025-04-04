@@ -1,0 +1,35 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "📘 Treinar Rasa",
+      "type": "shell",
+      "command": "rasa train",
+      "options": {
+        "cwd": "${workspaceFolder}/apps/rasa"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "🚀 Subir containers do ecossistema",
+      "type": "shell",
+      "command": "docker-compose up -d",
+      "options": {
+        "cwd": "${workspaceFolder}/docker"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "📡 Iniciar OTEL Collector",
+      "type": "shell",
+      "command": "otelcol --config ${workspaceFolder}/config/otel/otel-collector-config-sinapse20.yaml",
+      "problemMatcher": []
+    },
+    {
+      "label": "🛑 Encerrar Rasa na porta 5005",
+      "type": "shell",
+      "command": "fuser -k 5005/tcp || true",
+      "problemMatcher": []
+    }
+  ]
+}

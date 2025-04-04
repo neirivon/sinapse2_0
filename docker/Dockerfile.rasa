@@ -1,0 +1,21 @@
+FROM rasa/rasa:3.6.10
+
+# Copia os arquivos do projeto
+COPY ./rasa /app
+
+# Define o diretório de trabalho
+WORKDIR /app
+
+# Permissões root
+USER root
+
+# Instala a biblioteca prometheus_client
+RUN pip install --no-cache-dir prometheus_client
+
+# Copia e aplica permissão no entrypoint
+COPY ./rasa/entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+# Executa o script de entrada via shell
+ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
+

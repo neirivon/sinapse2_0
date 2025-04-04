@@ -1,0 +1,42 @@
+{
+  "folders": [
+    {
+      "path": "apps"
+    },
+    {
+      "path": "config"
+    },
+    {
+      "path": "data"
+    },
+    {
+      "path": "dashboards"
+    },
+    {
+      "path": "logs"
+    },
+    {
+      "path": "manuais"
+    },
+    {
+      "path": "models"
+    },
+    {
+      "path": "scripts"
+    },
+    {
+      "path": "docker"
+    }
+  ],
+  "settings": {
+    "files.exclude": {
+      "**/__pycache__": true,
+      "**/*.pyc": true,
+      "**/*.pyo": true
+    },
+    "editor.wordWrap": "on",
+    "editor.formatOnSave": true,
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true
+  }
+}

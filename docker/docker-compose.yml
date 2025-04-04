@@ -1,0 +1,134 @@
+services:
+  rasa:
+    build:
+      context: ./
+      dockerfile: Dockerfile.rasa
+    container_name: rasa
+    restart: always
+    ports:
+      - "5005:5005"
+      - "9091:9091"
+    volumes:
+      - ./rasa:/app
+    environment:
+      - METRICS_ENABLED=true
+      - PROMETHEUS_PORT=9091
+    networks:
+      - sinapse20_net
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5005/status || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  otel-collector:
+    image: otel/opentelemetry-collector-contrib:latest
+    container_name: otel-collector
+    restart: always
+    command: ["--config=/etc/otel-collector-config-sinapse20.yaml"]
+    volumes:
+      - ./otel/otel-collector-config-sinapse20.yaml:/etc/otel-collector-config-sinapse20.yaml
+    ports:
+      - "4317:4317"
+      - "4318:4318"
+      - "8889:8889"
+    networks:
+      - sinapse20_net
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8889/metrics | grep -q up"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    restart: always
+    volumes:
+      - ./prometheus:/etc/prometheus
+    ports:
+      - "9090:9090"
+    networks:
+      - sinapse20_net
+    depends_on:
+      - rasa
+      - dcgm-exporter
+      - redisai-exporter
+      - otel-collector
+    healthcheck:
+      test: ["CMD-SHELL", "wget --spider http://localhost:9090 || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    restart: always
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./docker-data/grafana:/var/lib/grafana
+    networks:
+      - sinapse20_net
+    depends_on:
+      - prometheus
+    healthcheck:
+      test: ["CMD-SHELL", "wget --spider http://localhost:3000 || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  dcgm-exporter:
+    image: nvidia/dcgm-exporter:4.1.1-4.0.4-ubuntu22.04
+    container_name: dcgm-exporter
+    restart: always
+    runtime: nvidia
+    cap_add:
+      - SYS_ADMIN
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=all
+    ports:
+      - "9400:9400"
+    volumes:
+      - /var/run/nvidia-container-runtime:/var/run/nvidia-container-runtime
+    networks:
+      - sinapse20_net
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:9400/metrics | grep -q DCGM_FI_DEV_GPU_TEMP"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  redisai:
+    image: redis:7
+    container_name: redisai
+    restart: always
+    ports:
+      - "6380:6379"
+    networks:
+      - sinapse20_net
+
+  redisai-exporter:
+    image: oliver006/redis_exporter:latest
+    container_name: redisai-exporter
+    restart: always
+    environment:
+      - REDIS_ADDR=redisai:6379
+    ports:
+      - "9121:9121"
+    networks:
+      - sinapse20_net
+    depends_on:
+      - redisai
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:9121/metrics | grep -q redis_up"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+networks:
+  sinapse20_net:
+    driver: bridge
+    name: sinapse20_net

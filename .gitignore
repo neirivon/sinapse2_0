@@ -1,0 +1,11 @@
+# Ignorar diretórios protegidos
+docker-data/
+prometheus-grafana/
+data/grafana/
+*.db
+*.log
+*.csv
+*.pdf
+*.png
+__pycache__/
+.env
